@@ -10,10 +10,25 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="{{Request::is('movies') ? 'active' : ''}}">
-            <a class="nav-link" href="/movies">Movies</a>
+          <a class="nav-link" href="{{route('films')}}">Movies</a>
           </li>
           <li class="{{Request::is('contact') ? 'active' : ''}}">
             <a class="nav-link" href="/contact">Contact</a>
           </li>
+         
+          @auth
+          
+          <li class="{{Request::is('logout') ? 'active' : ''}}">
+          <a class="nav-link" href="{{ route('logout') }}">Log out</a>
+          </li>
+            @else    
+            <li class="{{Request::is('login') ? 'active' : ''}}">
+              <a class="nav-link" href="/login">Log in</a>
+            </li>
+            <li class="{{Request::is('register') ? 'active' : ''}}">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+          @endauth
       </div>
     </nav>
+

@@ -1,6 +1,11 @@
 @section('sidebar')
         <div class="well">
-            <h3>Sidebar</h3>
-            This is the sidebar
+            @auth
+            <h3>You are logged in!</h3>
+            
+            @else
+            <h3>You are not logged in!</h3>
+            @endauth
+            
             @show
         </div>

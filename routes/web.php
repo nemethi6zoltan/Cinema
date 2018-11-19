@@ -11,12 +11,21 @@
 |
 */
 
-Route::get('/', 'PagesController@getHome');
+Route::get('/', 'PagesController@getHome')->name('home');
 
-Route::get('/movies', 'PagesController@getMovies');
+Route::get('/movies', 'PagesController@getMovies')->name('films');
 
 Route::get('/contact', 'PagesController@getContact');
 
 Route::get('/messages', 'MessagesController@getMessages');
 
+
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/register', 'Auth\RegisterController@register');
+
 Route::post('/contact/submit', 'MessagesController@submit');
+
+
+Route::get('/login', 'Auth\LoginController@login')->name('login');
+Route::post('/login', 'Auth\LoginController@authenticate');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
