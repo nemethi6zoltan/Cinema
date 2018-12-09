@@ -36,21 +36,7 @@ class ReservationController extends Controller
                 
                 $seats = $request->input('seat');
 
-                $string = "SELECT count(id) as cid FROM reservations WHERE";
-                $first = true;
-                foreach($seats as $seat) {
-                    if(!$first)
-                        $string .= " OR ";
-                    $string .= " place_id = ".$seat;
-                    $first = false;
-                }
-
-                $result = DB::select($string);
-                if($result[0]->cid > 0) {
-                    
-                    return view('reservations.list', ['movie_id' => $movie_id, 'error' => true]);
-                } else {
-                    
+               
                     $address = new Address;
                     $address->name = $name;
                     $address->email = $email;
@@ -70,7 +56,7 @@ class ReservationController extends Controller
 
                     }
                 }
-            } else {
+            else {
                 return view('reservations.form', ['error' => true, 'movie_id' => $movie_id]);
             }
         }
